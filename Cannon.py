@@ -13,6 +13,12 @@ from turtle import *
 
 from freegames import vector
 
+
+shot_speed_div=15
+target_speed=1.2
+gravity=0.35
+timer_ms=20
+
 ball = vector(-200, -200)
 speed = vector(0, 0)
 targets = []
@@ -23,8 +29,8 @@ def tap(x, y):
     if not inside(ball):
         ball.x = -199
         ball.y = -199
-        speed.x = (x + 200) / 25
-        speed.y = (y + 200) / 25
+        speed.x = (x + 200) / shot_speed_div
+        speed.y = (y + 200) / shot_speed_div
 
 
 def inside(xy):
@@ -55,10 +61,10 @@ def move():
         targets.append(target)
 
     for target in targets:
-        target.x -= 0.5
+        target.x -= target_speed
 
     if inside(ball):
-        speed.y -= 0.35
+        speed.y -= gravity
         ball.move(speed)
 
     dupe = targets.copy()
