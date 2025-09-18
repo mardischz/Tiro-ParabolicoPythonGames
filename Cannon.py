@@ -69,10 +69,11 @@ def move():
             targets.append(target)
 
     draw()
-
+    """Remove targets that have been hit and targets that have gone off-screen."""
     for target in targets:
         if not inside(target):
-            return
+            target.x = 200
+            target.y = randrange(-150, 150)
 
     ontimer(move, 50)
 
