@@ -10,7 +10,6 @@ Exercises
 
 from random import randrange
 from turtle import *
-
 from freegames import vector
 
 ball = vector(-200, -200)
@@ -55,7 +54,7 @@ def move():
         targets.append(target)
 
     for target in targets:
-        target.x -= 0.5
+        target.x -= 1.0
 
     if inside(ball):
         speed.y -= 0.35
@@ -69,7 +68,8 @@ def move():
             targets.append(target)
 
     draw()
-    """Remove targets that have been hit and targets that have gone off-screen."""
+
+    # Remove targets that have been hit and targets that have gone off-screen.
     for target in targets:
         if not inside(target):
             target.x = 200
